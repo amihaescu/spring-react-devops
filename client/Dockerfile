@@ -1,6 +1,7 @@
 FROM node:carbon
 WORKDIR /usr/app/
 COPY . .
+RUN npm install
 RUN npm install -g yarn
 RUN yarn build
 RUN yarn global add serve

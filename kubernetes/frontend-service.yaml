@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: beers-app-fe-service
+spec:
+  selector:
+    app: beers-app-fe
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5000
+  type: LoadBalancer

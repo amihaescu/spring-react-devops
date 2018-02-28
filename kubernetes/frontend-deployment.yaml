@@ -1,0 +1,21 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: beers-front-end-deployment
+  labels:
+    app: beers-app-fe
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: beers-app-fe
+  template:
+    metadata:
+      labels:
+        app: beers-app-fe
+    spec:
+      containers:
+      - name: beers-app
+        image: zorag/beer-app-frontend:latest
+        ports:
+        - containerPort: 5000
