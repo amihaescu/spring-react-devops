@@ -15,13 +15,13 @@ class BeerList extends React.Component<{}, any> {
     }
 
     getGoodBeers() {
-        fetch('http://a53df50271c9811e88dfe02e7aacc407-2122294412.eu-central-1.elb.amazonaws.com:9876/good-beers')
+        fetch('http://beer-api.m8tt.ddigital.org:9876/good-beers')
             .then(response => response.json())
             .then(data => this.setState({beers: data, isLoading: false}));
     }
 
     getAllBeers() {
-        fetch('http://a53df50271c9811e88dfe02e7aacc407-2122294412.eu-central-1.elb.amazonaws.com:9876/beers')
+        fetch('http://beer-api.m8tt.ddigital.org:9876/beers')
             .then(response => response.json())
             .then(data => this.setState({beers: data, isLoading: false}));
     }

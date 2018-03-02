@@ -19,3 +19,4 @@ spec:
         image: zorag/beer-app-backend:latest
         ports:
         - containerPort: 9000
+        imagePullPolicy: Always
