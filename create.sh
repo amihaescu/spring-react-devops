@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 kubectl create -f kubernetes/backend-deployment.yaml
-kubectl create -f kubernetes/backend-service.yaml
 
 kubectl create -f kubernetes/frontend-deployment.yaml
-kubectl create -f kubernetes/frontend-service.yaml
 
 BEER_API=$(kubectl get service beers-app-service -o=jsonpath='{.status.loadBalancer.ingress[0].hostname}')
 BEER_FE=$(kubectl get service beers-app-fe-service -o=jsonpath='{.status.loadBalancer.ingress[0].hostname}')
