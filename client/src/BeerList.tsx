@@ -15,13 +15,15 @@ class BeerList extends React.Component<{}, any> {
     }
 
     getGoodBeers() {
-        fetch('http://beer-api.m8tt.ddigital.org:9876/good-beers')
+        let location = window.location.hostname;
+        fetch('http://' + location + ':9000/good-beers')
             .then(response => response.json())
             .then(data => this.setState({beers: data, isLoading: false}));
     }
 
     getAllBeers() {
-        fetch('http://beer-api.m8tt.ddigital.org:9876/beers')
+        let location = window.location.hostname;
+        fetch('http://' + location + ':9000/beers')
             .then(response => response.json())
             .then(data => this.setState({beers: data, isLoading: false}));
     }
