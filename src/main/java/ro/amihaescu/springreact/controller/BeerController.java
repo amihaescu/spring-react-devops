@@ -18,23 +18,10 @@ public class BeerController {
         this.repository = repository;
     }
 
-    @GetMapping("/good-beers")
-    @CrossOrigin
-    public List<Beer> goodBeers(){
-        return repository.findAll()
-                .stream()
-                .filter(this::isGreat)
-                .collect(Collectors.toList());
-    }
-
     @GetMapping("/beers")
     @CrossOrigin
     public List<Beer> allBeers(){
         return repository.findAll();
     }
 
-    private boolean isGreat(Beer beer){
-        return !"Heineken".equals(beer.getName()) &&
-                !"Budweiser".equals(beer.getName());
-    }
 }

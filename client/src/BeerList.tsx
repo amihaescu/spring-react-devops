@@ -14,13 +14,6 @@ class BeerList extends React.Component<{}, any> {
 
     }
 
-    getGoodBeers() {
-        let location = window.location.hostname;
-        fetch('http://' + location + ':9000/good-beers')
-            .then(response => response.json())
-            .then(data => this.setState({beers: data, isLoading: false}));
-    }
-
     getAllBeers() {
         let location = window.location.hostname;
         fetch('http://' + location + ':9000/beers')
@@ -44,10 +37,7 @@ class BeerList extends React.Component<{}, any> {
         return (
             <div>
                 <h2>Beer List</h2>
-                <div>
-                    <button onClick={(e) => this.getAllBeers()} className="btn btn-outline-primary">Just beers</button>
-                    <button onClick={(e) => this.getGoodBeers()}className="btn btn-outline-primary">Good beers</button>
-                </div>
+                <div />
                 {beers.map((beer: any) =>
                     <div key={beer.id}>
                     {beer.name}<br/>
