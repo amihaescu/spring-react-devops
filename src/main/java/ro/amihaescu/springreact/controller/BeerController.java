@@ -28,14 +28,10 @@ public class BeerController {
     @GetMapping("/good-beers")
     @CrossOrigin
     public List<Beer> goodBeers(){
-        List<Beer> allBeers = repository.findAll();
-        List<Beer> goodBeers = new ArrayList<>();
-        for (Beer beer : allBeers) {
-            if (beer.getName().equals("Budweiser")){
-                goodBeers.add(beer);
-            }
-        }
-        return goodBeers;
+        return repository.findAll()
+                .stream()
+                .filter(beer -> "Budweiser".equals(beer.getName()))
+                .collect(Collectors.toList());
     }
 
 }
