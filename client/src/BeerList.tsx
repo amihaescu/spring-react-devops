@@ -15,8 +15,15 @@ class BeerList extends React.Component<{}, any> {
     }
 
     getAllBeers() {
-        let location = window.location.hostname;
-        fetch('http://' + location + ':9000/beers')
+        let location = '9b63dc2d.ngrok.io';
+        fetch('http://' + location + '/beers')
+            .then(response => response.json())
+            .then(data => this.setState({beers: data, isLoading: false}));
+    }
+
+    getGoodBeers() {
+        let location = '9b63dc2d.ngrok.io';
+        fetch('http://' + location + '/good-beers')
             .then(response => response.json())
             .then(data => this.setState({beers: data, isLoading: false}));
     }
@@ -36,6 +43,8 @@ class BeerList extends React.Component<{}, any> {
 
         return (
             <div>
+                <button onClick={(e) => this.getAllBeers()} className="btn btn-outline-primary">Just beers</button>
+                <button onClick={(e) => this.getGoodBeers()}className="btn btn-outline-primary">Good beers</button>
                 <h2>Beer List</h2>
                 <div />
                 {beers.map((beer: any) =>
